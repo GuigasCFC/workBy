@@ -52,7 +52,7 @@ if(isset($_POST['entrar'])){
             <?php endif; ?>
             <button type="submit" name="entrar">Entrar</button>
         </form>
-        <a href="index.php">Não tem uma conta? Cadastre-se agora!</a>
+        <a href="esqueceu-senha.php">Esqueceu sua senha? Recuperar</a>
     </div>
 </body>
 </html>
