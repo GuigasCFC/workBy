@@ -12,14 +12,13 @@ if(isset($_POST['entrar'])){
     $login = $_POST['login'];
     $senha = $_POST['senha'];
 
-    $query = $conn->prepare('SELECT * FROM cadastros WHERE (email_cad = :plogin OR nome_id = :plogin2) AND senha_cad = :psenha');
+    $query = $conn->prepare('SELECT * FROM cadastros WHERE email_cad = :plogin OR nome_id = :plogin2');
     $query->bindValue(':plogin',  $login);
     $query->bindValue(':plogin2', $login);
-    $query->bindValue(':psenha',  $senha);
     $query->execute();
     $usuario = $query->fetch(PDO::FETCH_ASSOC);
 
-    if($usuario){
+    if($usuario && password_verify($senha, $usuario['senha_cad'])){
         $_SESSION['usuario'] = $usuario['nome_id'];
         $_SESSION['email']   = $usuario['email_cad'];
         header("Location: inicial.php");

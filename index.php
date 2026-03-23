@@ -25,7 +25,7 @@
         } else {
             $grava = $conn->prepare('INSERT INTO cadastros (id_cad, email_cad, senha_cad, nome_id) VALUES (NULL, :pemail, :psenha, :pnome)');
             $grava->bindValue(':pemail', $email);
-            $grava->bindValue(':psenha', $senha);
+            $grava->bindValue(':psenha', password_hash($senha, PASSWORD_BCRYPT));
             $grava->bindValue(':pnome',  $nome);
             $grava->execute();
 

@@ -18,7 +18,6 @@
             <p id="mensagem-erro" style="color: red; display: none; margin: 0;"></p>
             <button type="submit" id="btnEnviar">Enviar código para redefinir</button>
         </form>
-        <a href="index.php">Fazer seu cadastro ou login!</a>
     </div>
  
     <!-- ─── Formulário 2: Definir nova senha (com token na URL) ─── -->
@@ -48,7 +47,7 @@
         <div class="popup-box">
             <h3>✅ Sucesso!</h3>
             <p>Código enviado com sucesso!</p>
-            <button onclick="fecharPopup()"><a href="inicial.php">Continuar</a></button>
+            <button onclick="fecharPopup()"><a href="login.php">Continuar</a></button>
         </div>
     </div>
  
