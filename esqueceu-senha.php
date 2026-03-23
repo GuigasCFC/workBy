@@ -40,7 +40,7 @@
     <div class="login-container" id="tokenInvalido" style="display: none;">
         <h2>⚠️ Link inválido</h2>
         <p>Este link de redefinição é inválido ou já expirou.</p>
-        <a href="recuperar_senha.php" style="margin-top: 12px; display: inline-block;">Solicitar novo link</a>
+        <a href="esqueceu-senha.php" style="margin-top: 12px; display: inline-block;">Solicitar novo link</a>
     </div>
  
     <!-- ─── Popup de sucesso (envio do e-mail) ─── -->
@@ -57,7 +57,7 @@
         <div class="popup-box">
             <h3>✅ Senha redefinida!</h3>
             <p>Sua senha foi alterada com sucesso.</p>
-            <button><a href="index.php">Fazer login</a></button>
+            <button><a href="login.php">Fazer login</a></button>
         </div>
     </div>
  

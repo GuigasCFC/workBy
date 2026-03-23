@@ -1,8 +1,19 @@
 <?php
+ob_start();
+ini_set('display_errors', 1);
+error_reporting(0);
 require 'conn.php';
 $pdo = $conn;
 
+ob_clean();
 header('Content-Type: application/json');
+
+set_exception_handler(function($e) {
+    ob_clean();
+    header('Content-Type: application/json');
+    echo json_encode(['erro' => $e->getMessage()]); // ← mostra o erro real
+    exit;
+});
 
 // ─── Recebe os dados ──────────────────────────────────────────────────────────
 $token      = trim($_POST['token'] ?? '');
@@ -20,7 +31,7 @@ if (strlen($nova_senha) < 6) {
 
 // ─── Valida o token (deve existir e não estar expirado) ───────────────────────
 $stmt = $pdo->prepare("
-    SELECT id FROM usuarios
+    SELECT id_cad FROM cadastros
     WHERE reset_token = :token AND reset_token_expiry > NOW()
     LIMIT 1
 ");
@@ -36,13 +47,18 @@ if (!$usuarioEncontrado) {
 $hash = password_hash($nova_senha, PASSWORD_BCRYPT);
 
 $stmt = $pdo->prepare("
-    UPDATE usuarios
-    SET senha = :senha, reset_token = NULL, reset_token_expiry = NULL
-    WHERE id = :id
+    UPDATE cadastros
+    SET senha_cad = :senha, reset_token = NULL, reset_token_expiry = NULL
+    WHERE id_cad = :id
 ");
-$stmt->execute([
+$ok = $stmt->execute([
     ':senha' => $hash,
-    ':id'    => $usuarioEncontrado['id']
+    ':id'    => $usuarioEncontrado['id_cad']
 ]);
-
-echo json_encode(['mensagem' => 'Senha redefinida com sucesso!']);
+if ($ok) {
+    echo json_encode(['mensagem' => 'Senha redefinida com sucesso!']);
+} else {
+    http_response_code(500);
+    echo json_encode(['erro' => 'Falha ao atualizar a senha.']);
+}
+exit;

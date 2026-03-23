@@ -69,7 +69,7 @@ document.getElementById('formReset').addEventListener('submit', async function(e
     btn.textContent = 'Salvando...';
 
     try {
-        const response = await fetch('process_reset.php', {
+        const response = await fetch('process-reset.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `token=${encodeURIComponent(token)}&nova_senha=${encodeURIComponent(novaSenha)}`
