@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-    <link rel="stylesheet" href="assets/inicial.css">
+    <link rel="stylesheet" href="assets/designadas.css">
     <title>Pagina Inicial - WorkBY</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
             <span class="logo-nome"><a href="inicial.php">WorkBY</a></span>
         </div>
         <ul class="nav-links">
-            <li class="selected">
+            <li>
                 <a href="inicial.php">
                     <i class="bx bx-grid"></i>
                     <span class="link-nome">Dashboard</span>
@@ -32,7 +32,7 @@
                     <li><a class="link-nome" href="inicial.php">Dashboard</a></li>
                 </ul>
             </li>
-            <li>
+            <li class="selected">
                 <div class="icon-link">
                     <a href="#">
                         <i class="bx bx-album-covers"></i>
