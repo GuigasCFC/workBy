@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
     <link rel="stylesheet" href="assets/inicial.css">
     <title>Dashboard - WorkBY</title>
+    <title>Pagina Inicial - WorkBY</title>
 </head>
 <body>
     <div class="right-taskbar">
