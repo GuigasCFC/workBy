@@ -29,7 +29,6 @@ if (strlen($nova_senha) < 6) {
     exit;
 }
 
-// ─── Valida o token (deve existir e não estar expirado) ───────────────────────
 $stmt = $pdo->prepare("
     SELECT id_cad FROM cadastros
     WHERE reset_token = :token AND reset_token_expiry > NOW()

@@ -20,7 +20,7 @@
     <div class="right-taskbar">
         <div class="logo">
             <i class="bx bx-business"></i>
-            <span class="logo-nome">WorkBY</span>
+            <span class="logo-nome"><a href="inicial.php">WorkBY</a></span>
         </div>
         <ul class="nav-links">
             <li class="selected">
@@ -29,7 +29,7 @@
                     <span class="link-nome">Dashboard</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link-nome" href="#">Dashboard</a></li>
+                    <li><a class="link-nome" href="inicial.php">Dashboard</a></li>
                 </ul>
             </li>
             <li>
@@ -42,7 +42,7 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link-nome" href="#">Categorias</a></li>
-                    <li><a href="#">Designadas a mim</a></li>
+                    <li><a href="designadas.php">Designadas a mim</a></li>
                     <li><a href="#">Concluídas</a></li>
                     <li><a href="#">Atrasadas</a></li>
                 </ul>
