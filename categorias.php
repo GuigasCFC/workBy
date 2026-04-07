@@ -80,7 +80,12 @@
                 <span class="text"></span>
             </div>
     </div>
-
+    <section class="category">
+        <h1 style="color: white; margin-left: 10px;">Categorias</h1>
+        <div class="new-atividade">
+            <i class="bx bx-plus"></i><h1>Nova categoria</h1>
+        </div>
+    </section>
 
 
     <script src="assets/inicial.js">

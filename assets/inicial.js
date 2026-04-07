@@ -5,7 +5,6 @@ for (var i = 0; i < arrow.length; i++){
         arrowParent.classList.toggle("showMenu");
     });
 }
-<<<<<<< HEAD
 
 /* ── Helpers de breakpoint ── */
 function isMobile()  { return window.innerWidth <= 767; }
@@ -43,21 +42,6 @@ function applySidebarForBreakpoint() {
 menuBtn.addEventListener('click', () => {
     if (isMobile()) return; /* No mobile o botão não faz nada */
 
-=======
- 
-/* ── Sidebar toggle ── */
-const taskbar        = document.querySelector('.right-taskbar');
-const menuBtn        = document.querySelector('.bx-menu');
-const sidebarOverlay = document.getElementById('sidebarOverlay');
- 
-function isMobile()  { return window.innerWidth <= 767; }
-function isTablet()  { return window.innerWidth > 767 && window.innerWidth <= 1024; }
-function isDesktop() { return window.innerWidth > 1024; }
- 
-menuBtn.addEventListener('click', () => {
-    if (isMobile()) return;
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
     if (isTablet()) {
         const opening = !taskbar.classList.contains('open');
         taskbar.classList.toggle('open', opening);
@@ -65,27 +49,18 @@ menuBtn.addEventListener('click', () => {
         sidebarOverlay.classList.toggle('active', opening);
         return;
     }
-<<<<<<< HEAD
 
     /* Desktop: alterna close */
-=======
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
     taskbar.classList.toggle('close');
     taskbar.classList.remove('open');
     sidebarOverlay.classList.remove('active');
 });
-<<<<<<< HEAD
 
 /* ── Fecha ao clicar no overlay ── */
-=======
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
 sidebarOverlay.addEventListener('click', () => {
     taskbar.classList.remove('open');
     sidebarOverlay.classList.remove('active');
 });
-<<<<<<< HEAD
 
 /* ── Ajusta ao redimensionar ── */
 let lastBreakpoint = null;
@@ -108,17 +83,6 @@ applySidebarForBreakpoint();
 /* ══════════════════════════════════════════
    Dial / Progress chart
 ══════════════════════════════════════════ */
-=======
- 
-window.addEventListener('resize', () => {
-    if (isDesktop() || isMobile()) {
-        taskbar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
-    }
-});
- 
-/* ── Dial / Progress chart ── */
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
 var Dial = function(container) {
     this.container   = container;
     this.size        = this.container.dataset.size;
@@ -134,11 +98,6 @@ var Dial = function(container) {
     this.arrow;
     this.create();
 };
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
 Dial.prototype.create = function() {
     this.createSvg();
     this.createDefs();
@@ -148,28 +107,16 @@ Dial.prototype.create = function() {
     this.createArrow();
     this.container.appendChild(this.svg);
 };
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
 Dial.prototype.createSvg = function() {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute('width',  this.size + 'px');
     svg.setAttribute('height', this.size + 'px');
     this.svg = svg;
 };
-<<<<<<< HEAD
 
 Dial.prototype.createDefs = function() {
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
 
-=======
- 
-Dial.prototype.createDefs = function() {
-    var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
     var linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
     linearGradient.setAttribute('id', 'gradient');
     var stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
@@ -180,11 +127,6 @@ Dial.prototype.createDefs = function() {
     stop2.setAttribute('stop-color', '#78F8EC');
     stop2.setAttribute('offset', '100%');
     linearGradient.appendChild(stop2);
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
     var linearGradientBackground = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
     linearGradientBackground.setAttribute('id', 'gradient-background');
     var stop1b = document.createElementNS("http://www.w3.org/2000/svg", "stop");
@@ -195,11 +137,6 @@ Dial.prototype.createDefs = function() {
     stop2b.setAttribute('stop-color', 'rgba(0,0,0,0.05)');
     stop2b.setAttribute('offset', '100%');
     linearGradientBackground.appendChild(stop2b);
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
     defs.appendChild(linearGradient);
     defs.appendChild(linearGradientBackground);
     this.svg.appendChild(defs);
@@ -238,11 +175,6 @@ Dial.prototype.createOverlay = function() {
     this.svg.appendChild(overlay);
     this.dialOverlay = overlay;
 };
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> c19bdca7bffb44316f007b16e4d2f0193e97af97
 Dial.prototype.createText = function() {
     var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
     text.setAttribute('x',              this.size / 2);
@@ -320,4 +252,4 @@ var containers = document.getElementsByClassName("chart");
 if (containers.length > 0) {
     var dial = new Dial(containers[0]);
     dial.animateStart();
-}
+};

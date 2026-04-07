@@ -18,7 +18,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ===================== SIDEBAR ===================== */
+/* sidebar */
 .right-taskbar {
     position: fixed;
     top: 0;
@@ -183,7 +183,7 @@ body {
     transform: translateY(-50%);
 }
 
-/* ===================== PERFIL ===================== */
+/* perfil */
 .right-taskbar .details-perfil {
     position: fixed;
     bottom: 0;
@@ -230,7 +230,7 @@ body {
     font-size: 12px;
 }
 
-/* ===================== HOME SECTION (área de conteúdo) ===================== */
+/*  home section */
 .home-section {
     position: relative;
     background: black;
@@ -270,7 +270,7 @@ body {
     font-weight: 600;
 }
 
-/* ===================== OVERLAY ===================== */
+/*  overlay */
 .sidebar-overlay {
     display: none;
     position: fixed;
@@ -282,7 +282,40 @@ body {
     display: block;
 }
 
-/* ===================== TABLET (≤ 1024px) ===================== */
+.category{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.new-atividade{
+    background-color: blue;
+    display: flex;
+    color: white;
+    width: 350px;
+    height: 120px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* reponsavidade */
+
+/*  TABLET (≤ 1024px)  */
 @media (max-width: 1024px) {
     .right-taskbar {
         width: var(--sidebar-collapsed);
