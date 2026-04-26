@@ -14,7 +14,6 @@
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
     <link rel="stylesheet" href="assets/inicial.css">
-    <title>Dashboard - WorkBY</title>
     <title>Pagina Inicial - WorkBY</title>
 </head>
 <body>
@@ -34,16 +33,22 @@
                 </ul>
             </li>
             <li>
-                <a href="categorias.php">
-                    <i class="bx bx-album-covers"></i>
-                    <span class="link-nome">Categorias</span>
-                </a>
-                <ul class="sub-menu blank">
+                <div class="icon-link">
+                    <a href="#">
+                        <i class="bx bx-album-covers"></i>
+                        <span class="link-nome">Categorias</span>
+                    </a>
+                    <i class="bx bx-chevron-down arrow"></i>
+                </div>
+                <ul class="sub-menu">
                     <li><a class="link-nome" href="#">Categorias</a></li>
+                    <li><a href="#">Designadas a mim</a></li>
+                    <li><a href="#">Concluídas</a></li>
+                    <li><a href="#">Atrasadas</a></li>
                 </ul>
             </li>
             <li>
-                <a href="tasks.php">
+                <a href="#">
                     <i class="bx bx-check"></i>
                     <span class="link-nome">Tasks</span>
                 </a>
@@ -52,12 +57,12 @@
                 </ul>
             </li>
             <li>
-                <a href="importante.php">
-                    <i class="bx bx-cog"></i>
-                    <span class="link-nome">Configurações</span>
+                <a href="#">
+                    <i class="bx bx-alert-triangle"></i>
+                    <span class="link-nome">Importante</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a href="#">Configurações</a></li>
+                    <li><a href="#">Importante</a></li>
                 </ul>
             </li>
             <li>
