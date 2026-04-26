@@ -1,3 +1,4 @@
+/* ── Sub-menu arrows ── */
 let arrow = document.querySelectorAll(".arrow");
 for (var i = 0; i < arrow.length; i++){
     arrow[i].addEventListener("click", (e) => {
@@ -5,44 +6,63 @@ for (var i = 0; i < arrow.length; i++){
         arrowParent.classList.toggle("showMenu");
     });
 }
- 
+
 /* ── Sidebar toggle ── */
 const taskbar        = document.querySelector('.right-taskbar');
 const menuBtn        = document.querySelector('.bx-menu');
 const sidebarOverlay = document.getElementById('sidebarOverlay');
- 
-function isMobile()  { return window.innerWidth <= 767; }
-function isTablet()  { return window.innerWidth > 767 && window.innerWidth <= 1024; }
+
+function isMobile()  { return window.innerWidth <= 768; }
+function isTablet()  { return window.innerWidth > 768 && window.innerWidth <= 1024; }
 function isDesktop() { return window.innerWidth > 1024; }
- 
+
+/* Ajusta estado da sidebar conforme tamanho da tela */
+function handleResize() {
+    if (isMobile()) {
+        taskbar.classList.remove('close', 'open');
+        sidebarOverlay.classList.remove('active');
+    } else if (isTablet()) {
+        taskbar.classList.remove('open');
+        taskbar.classList.add('close');
+        sidebarOverlay.classList.remove('active');
+    } else {
+        /* Desktop: remove .open (tablet), mantém estado .close do usuário */
+        taskbar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+    }
+}
+
+/* Aplica ao carregar a página */
+handleResize();
+
+/* Aplica ao redimensionar */
+window.addEventListener('resize', handleResize);
+
+/* Clique no hamburguer */
 menuBtn.addEventListener('click', () => {
     if (isMobile()) return;
- 
+
     if (isTablet()) {
         const opening = !taskbar.classList.contains('open');
         taskbar.classList.toggle('open', opening);
-        taskbar.classList.remove('close');
+        taskbar.classList.toggle('close', !opening);
         sidebarOverlay.classList.toggle('active', opening);
         return;
     }
- 
+
+    /* Desktop */
     taskbar.classList.toggle('close');
     taskbar.classList.remove('open');
     sidebarOverlay.classList.remove('active');
 });
- 
+
+/* Fecha sidebar ao clicar no overlay */
 sidebarOverlay.addEventListener('click', () => {
     taskbar.classList.remove('open');
+    taskbar.classList.add('close');
     sidebarOverlay.classList.remove('active');
 });
- 
-window.addEventListener('resize', () => {
-    if (isDesktop() || isMobile()) {
-        taskbar.classList.remove('open');
-        sidebarOverlay.classList.remove('active');
-    }
-});
- 
+
 /* ── Dial / Progress chart ── */
 var Dial = function(container) {
     this.container   = container;
@@ -59,7 +79,7 @@ var Dial = function(container) {
     this.arrow;
     this.create();
 };
- 
+
 Dial.prototype.create = function() {
     this.createSvg();
     this.createDefs();
@@ -69,17 +89,17 @@ Dial.prototype.create = function() {
     this.createArrow();
     this.container.appendChild(this.svg);
 };
- 
+
 Dial.prototype.createSvg = function() {
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute('width',  this.size + 'px');
     svg.setAttribute('height', this.size + 'px');
     this.svg = svg;
 };
- 
+
 Dial.prototype.createDefs = function() {
     var defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
- 
+
     var linearGradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
     linearGradient.setAttribute('id', 'gradient');
     var stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
@@ -90,7 +110,7 @@ Dial.prototype.createDefs = function() {
     stop2.setAttribute('stop-color', '#78F8EC');
     stop2.setAttribute('offset', '100%');
     linearGradient.appendChild(stop2);
- 
+
     var linearGradientBackground = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
     linearGradientBackground.setAttribute('id', 'gradient-background');
     var stop1b = document.createElementNS("http://www.w3.org/2000/svg", "stop");
@@ -101,15 +121,14 @@ Dial.prototype.createDefs = function() {
     stop2b.setAttribute('stop-color', 'rgba(0,0,0,0.05)');
     stop2b.setAttribute('offset', '100%');
     linearGradientBackground.appendChild(stop2b);
- 
+
     defs.appendChild(linearGradient);
     defs.appendChild(linearGradientBackground);
     this.svg.appendChild(defs);
     this.defs = defs;
 };
- 
+
 Dial.prototype.createSlice = function() {
-    /* Trilha de fundo */
     var track = document.createElementNS("http://www.w3.org/2000/svg", "circle");
     track.setAttribute('cx', this.size / 2);
     track.setAttribute('cy', this.size / 2);
@@ -118,12 +137,11 @@ Dial.prototype.createSlice = function() {
     track.setAttribute('stroke', 'url(#gradient-background)');
     track.setAttribute('stroke-width', this.strokeWidth);
     this.svg.appendChild(track);
- 
-    /* Arco de progresso */
+
     var slice = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    slice.setAttribute('fill',         'none');
-    slice.setAttribute('stroke',       'url(#gradient)');
-    slice.setAttribute('stroke-width', this.strokeWidth);
+    slice.setAttribute('fill',           'none');
+    slice.setAttribute('stroke',         'url(#gradient)');
+    slice.setAttribute('stroke-width',   this.strokeWidth);
     slice.setAttribute('stroke-linecap', 'round');
     slice.setAttribute('transform',
         'translate(' + this.strokeWidth / 2 + ',' + this.strokeWidth / 2 + ')');
@@ -131,7 +149,7 @@ Dial.prototype.createSlice = function() {
     this.svg.appendChild(slice);
     this.slice = slice;
 };
- 
+
 Dial.prototype.createOverlay = function() {
     var r   = this.radius - this.strokeWidth / 2;
     var cx  = this.size / 2;
@@ -144,20 +162,20 @@ Dial.prototype.createOverlay = function() {
     this.svg.appendChild(overlay);
     this.dialOverlay = overlay;
 };
- 
+
 Dial.prototype.createText = function() {
     var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    text.setAttribute('x',              this.size / 2);
-    text.setAttribute('y',              this.size / 2 + 10);
-    text.setAttribute('text-anchor',    'middle');
-    text.setAttribute('fill',           '#f5f5f5');
-    text.setAttribute('font-size',      this.size / 3.5);
-    text.setAttribute('font-family',    'Montserrat, sans-serif');
-    text.setAttribute('font-weight',    '600');
+    text.setAttribute('x',           this.size / 2);
+    text.setAttribute('y',           this.size / 2 + 10);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('fill',        '#f5f5f5');
+    text.setAttribute('font-size',   this.size / 3.5);
+    text.setAttribute('font-family', 'Montserrat, sans-serif');
+    text.setAttribute('font-weight', '600');
     this.svg.appendChild(text);
     this.text = text;
 };
- 
+
 Dial.prototype.createArrow = function() {
     var arrowSize = this.size / 8;
     var cx = this.size / 2;
@@ -172,7 +190,7 @@ Dial.prototype.createArrow = function() {
     this.svg.appendChild(arrow);
     this.arrow = arrow;
 };
- 
+
 Dial.prototype.polarToCartesian = function(cx, cy, r, angleDeg) {
     var rad = (angleDeg - 90) * Math.PI / 180.0;
     return {
@@ -180,36 +198,36 @@ Dial.prototype.polarToCartesian = function(cx, cy, r, angleDeg) {
         y: cy + r * Math.sin(rad)
     };
 };
- 
+
 Dial.prototype.describeArc = function(cx, cy, r, startAngle, endAngle) {
-    var start   = this.polarToCartesian(cx, cy, r, endAngle);
-    var end     = this.polarToCartesian(cx, cy, r, startAngle);
+    var start    = this.polarToCartesian(cx, cy, r, endAngle);
+    var end      = this.polarToCartesian(cx, cy, r, startAngle);
     var largeArc = endAngle - startAngle <= 180 ? '0' : '1';
     return [
         'M', start.x, start.y,
         'A', r, r, 0, largeArc, 0, end.x, end.y
     ].join(' ');
 };
- 
+
 Dial.prototype.setValue = function(value) {
     var c = (value / 100) * 360;
     if (c === 360) c = 359.99;
     var xy = this.size / 2 - this.strokeWidth / 2;
     var d  = this.describeArc(xy, xy, xy, 180, 180 + c);
     this.slice.setAttribute('d', d);
- 
+
     var tspanSize = (this.size / 3.5) / 3;
     this.text.innerHTML =
         Math.floor(value) +
         '<tspan font-size="' + tspanSize + '" dy="' + (-tspanSize * 1.2) + '">%</tspan>';
 };
- 
+
 Dial.prototype.animateStart = function() {
     var self    = this;
     var target  = parseFloat(this.value);
     var current = 0;
-    var step    = target / 60; /* ~1 s a 60 fps */
- 
+    var step    = target / 60;
+
     function frame() {
         current += step;
         if (current >= target) {
@@ -221,8 +239,10 @@ Dial.prototype.animateStart = function() {
     }
     requestAnimationFrame(frame);
 };
- 
-/* ── Inicialização ── */
-var containers = document.getElementsByClassName("chart");
-var dial = new Dial(containers[0]);
-dial.animateStart();
+
+/* ── Inicialização do Dial ── */
+var chartContainers = document.getElementsByClassName("chart");
+if (chartContainers.length > 0) {
+    var dial = new Dial(chartContainers[0]);
+    dial.animateStart();
+}

@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --text-color: #f5f5f5;
+    --select-color: #474747;
+    --sidebar-width: 260px;
+    --sidebar-collapsed: 78px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+body {
+    background-color: black;
+    overflow-x: hidden;
+}
+
+/* sidebar */
+.right-taskbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100%;
+    background: #2c2c2c;
+    z-index: 100;
+    transition: all 0.5s ease;
+}
+.right-taskbar.close {
+    width: var(--sidebar-collapsed);
+}
+.right-taskbar .logo {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.right-taskbar .logo i {
+    font-size: 30px;
+    color: #fff;
+    height: 50px;
+    min-width: var(--sidebar-collapsed);
+    text-align: center;
+    line-height: 50px;
+}
+.right-taskbar .logo .logo-nome {
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s ease;
+    transition-delay: 0.1s;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.right-taskbar.close .logo .logo-nome {
+    opacity: 0;
+    transition-delay: 0s;
+    pointer-events: none;
+}
+.right-taskbar .nav-links {
+    background: #2c2c2c;
+    height: 100%;
+    padding: 30px 0 150px 0;
+    overflow: visible;
+}
+.right-taskbar .nav-links .selected {
+    background: var(--select-color);
+}
+.right-taskbar .nav-links::-webkit-scrollbar {
+    display: none;
+}
+.right-taskbar .nav-links .icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.right-taskbar .nav-links li {
+    list-style: none;
+    position: relative;
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.right-taskbar .nav-links li:hover {
+    background: var(--select-color);
+}
+.right-taskbar .nav-links li.showMenu {
+    background: var(--select-color);
+}
+.right-taskbar.close .nav-links li .icon-link {
+    display: block;
+}
+.right-taskbar .nav-links li i {
+    height: 50px;
+    min-width: var(--sidebar-collapsed);
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    transition: all 0.3s ease;
+}
+.right-taskbar .nav-links li.showMenu i.arrow {
+    transform: rotate(-180deg);
+}
+.right-taskbar.close .nav-links i.arrow {
+    display: none;
+}
+.right-taskbar .nav-links li a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.right-taskbar .nav-links li a .link-nome {
+    font-size: 18px;
+    font-weight: 400;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.right-taskbar.close .nav-links li a .link-nome {
+    opacity: 0;
+    pointer-events: none;
+}
+.right-taskbar .nav-links li .sub-menu {
+    padding: 6px 6px 14px 80px;
+    margin-top: -10px;
+    background: var(--select-color);
+    display: none;
+}
+.right-taskbar .nav-links li.showMenu .sub-menu {
+    display: block;
+}
+.right-taskbar .nav-links li .sub-menu a {
+    color: #fff;
+    font-size: 15px;
+    padding: 5px 0;
+    white-space: nowrap;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+.right-taskbar .nav-links li .sub-menu a:hover {
+    opacity: 1;
+}
+.right-taskbar.close .nav-links li .sub-menu {
+    position: absolute;
+    left: 100%;
+    top: -10px;
+    margin-top: 0;
+    padding: 10px 20px;
+    border-radius: 0 6px 6px 0;
+    opacity: 0;
+    display: block;
+    pointer-events: none;
+    transition: 0s;
+    background: var(--select-color);
+    z-index: 200;
+}
+.right-taskbar.close .nav-links li:hover .sub-menu {
+    opacity: 1;
+    pointer-events: auto;
+    top: 0px;
+    transition: all 0.4s ease;
+}
+.right-taskbar .nav-links li .sub-menu .link-nome {
+    display: none;
+}
+.right-taskbar.close .nav-links li .sub-menu .link-nome {
+    font-size: 18px;
+    opacity: 1;
+    display: block;
+}
+.right-taskbar.close .nav-links li .sub-menu.blank {
+    opacity: 0;
+    pointer-events: none;
+    padding: 3px 20px 6px 16px;
+}
+.right-taskbar.close .nav-links li:hover .sub-menu.blank {
+    opacity: 1;
+    pointer-events: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* perfil */
+.right-taskbar .details-perfil {
+    position: fixed;
+    bottom: 0;
+    width: var(--sidebar-width);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #474747;
+    padding: 6px 0;
+    transition: all 0.5s ease;
+}
+.right-taskbar.close .details-perfil {
+    background: none;
+    width: var(--sidebar-collapsed);
+}
+.right-taskbar .details-perfil .perfil-content {
+    display: flex;
+    align-items: center;
+}
+.right-taskbar .details-perfil img {
+    height: 55px;
+    width: 55px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin: 0 14px 0 12px;
+    background: #474747;
+    padding: 10px;
+    transition: all 0.5s ease;
+}
+.right-taskbar .details-perfil .nome-perfil,
+.right-taskbar .details-perfil .funcao {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.right-taskbar.close .details-perfil i,
+.right-taskbar.close .details-perfil .nome-perfil,
+.right-taskbar.close .details-perfil .funcao {
+    display: none;
+}
+.right-taskbar .details-perfil .funcao {
+    font-size: 12px;
+}
+
+/*  home section */
+.home-section {
+    position: relative;
+    background: black;
+    min-height: 100vh;
+    left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    transition: all 0.5s ease;
+}
+.right-taskbar.close ~ .home-section {
+    left: var(--sidebar-collapsed);
+    width: calc(100% - var(--sidebar-collapsed));
+}
+.home-section .home-content {
+    height: 60px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+.home-section .home-content .bx-menu {
+    margin: 0;
+    cursor: pointer;
+    background: #2c2c2c;
+    border-radius: 0 0 8px 0;
+    display: block !important;
+    width: 76px;
+    height: 60px;
+    color: #fff;
+    font-size: 35px;
+    line-height: 60px !important;
+    text-align: center !important;
+    flex-shrink: 0;
+}
+.home-section .home-content .text {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/*  overlay */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+.sidebar-overlay.active {
+    display: block;
+}
+
+.category{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.new-atividade{
+    background-color: blue;
+    display: flex;
+    color: white;
+    width: 350px;
+    height: 120px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* reponsavidade */
+
+/*  TABLET (≤ 1024px)  */
+@media (max-width: 1024px) {
+    .right-taskbar {
+        width: var(--sidebar-collapsed);
+    }
+    .right-taskbar .logo .logo-nome,
+    .right-taskbar .nav-links li a .link-nome {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .right-taskbar .nav-links i.arrow { display: none; }
+    .right-taskbar .nav-links li .icon-link { display: block; }
+    .right-taskbar .details-perfil {
+        width: var(--sidebar-collapsed);
+        background: none;
+    }
+    .right-taskbar .details-perfil .nome-perfil,
+    .right-taskbar .details-perfil .funcao,
+    .right-taskbar .details-perfil > a {
+        display: none;
+    }
+
+    .right-taskbar.open {
+        width: var(--sidebar-width);
+        z-index: 200;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.6);
+    }
+    .right-taskbar.open .logo .logo-nome,
+    .right-taskbar.open .nav-links li a .link-nome {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .right-taskbar.open .nav-links i.arrow { display: block; }
+    .right-taskbar.open .nav-links li .icon-link { display: flex; }
+    .right-taskbar.open .details-perfil {
+        width: var(--sidebar-width);
+        background: #474747;
+    }
+    .right-taskbar.open .details-perfil .nome-perfil,
+    .right-taskbar.open .details-perfil .funcao,
+    .right-taskbar.open .details-perfil > a {
+        display: flex;
+    }
+
+    .right-taskbar:not(.open) .nav-links li .sub-menu {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        margin-top: 0;
+        padding: 10px 20px;
+        border-radius: 0 6px 6px 0;
+        opacity: 0;
+        display: block;
+        pointer-events: none;
+        transition: 0s;
+        background: #474747;
+        z-index: 200;
+    }
+    .right-taskbar:not(.open) .nav-links li:hover .sub-menu {
+        opacity: 1;
+        pointer-events: auto;
+        transition: all 0.3s ease;
+    }
+    .right-taskbar:not(.open) .nav-links li .sub-menu .link-nome {
+        font-size: 16px;
+        opacity: 1;
+        display: block;
+        color: #fff;
+    }
+    .right-taskbar:not(.open) .nav-links li .sub-menu.blank {
+        opacity: 0;
+        pointer-events: none;
+    }
+    .right-taskbar:not(.open) .nav-links li:hover .sub-menu.blank {
+        opacity: 1;
+        pointer-events: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .home-section {
+        left: var(--sidebar-collapsed);
+        width: calc(100% - var(--sidebar-collapsed));
+    }
+    .right-taskbar.close ~ .home-section {
+        left: var(--sidebar-collapsed);
+        width: calc(100% - var(--sidebar-collapsed));
+    }
+}
+
+/* ===================== MOBILE (≤ 767px) ===================== */
+@media (max-width: 767px) {
+
+    .right-taskbar,
+    .right-taskbar.close,
+    .right-taskbar.open {
+        position: fixed !important;
+        width: 100% !important;
+        height: 60px !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        z-index: 200 !important;
+        background: #2c2c2c !important;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.4) !important;
+        transform: none !important;
+        transition: none !important;
+    }
+
+    .right-taskbar .logo { display: none !important; }
+    .right-taskbar .details-perfil,
+    .right-taskbar.close .details-perfil,
+    .right-taskbar.open .details-perfil { display: none !important; }
+
+    .right-taskbar .nav-links,
+    .right-taskbar.close .nav-links,
+    .right-taskbar.open .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+        padding: 0 !important;
+        height: 60px !important;
+        width: 100% !important;
+        overflow: visible !important;
+        background: #2c2c2c !important;
+    }
+
+    .right-taskbar .nav-links > li:last-child { display: none !important; }
+
+    .right-taskbar .nav-links li,
+    .right-taskbar.close .nav-links li,
+    .right-taskbar.open .nav-links li {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 60px !important;
+        position: relative !important;
+        background: none !important;
+    }
+    .right-taskbar .nav-links li.selected { background: rgba(255,255,255,0.08) !important; }
+    .right-taskbar .nav-links li:hover    { background: rgba(255,255,255,0.08) !important; }
+
+    .right-taskbar .nav-links li a {
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .right-taskbar .nav-links li i,
+    .right-taskbar.close .nav-links li i {
+        min-width: unset !important;
+        width: 100% !important;
+        height: 60px !important;
+        line-height: 60px !important;
+        font-size: 22px !important;
+    }
+
+    .right-taskbar .nav-links li a .link-nome,
+    .right-taskbar.close .nav-links li a .link-nome,
+    .right-taskbar.open .nav-links li a .link-nome { display: none !important; }
+
+    .right-taskbar .nav-links i.arrow,
+    .right-taskbar.close .nav-links i.arrow,
+    .right-taskbar.open .nav-links i.arrow { display: none !important; }
+
+    .right-taskbar .nav-links li .icon-link {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 60px !important;
+    }
+
+    .right-taskbar .nav-links li .sub-menu,
+    .right-taskbar.close .nav-links li .sub-menu,
+    .right-taskbar:not(.open) .nav-links li .sub-menu {
+        position: absolute !important;
+        bottom: 60px !important;
+        top: auto !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 180px !important;
+        border-radius: 10px 10px 0 0 !important;
+        background: #3a3a3a !important;
+        opacity: 0 !important;
+        display: block !important;
+        pointer-events: none !important;
+        padding: 6px 0 !important;
+        z-index: 300 !important;
+        margin-top: 0 !important;
+        transition: opacity 0.2s ease !important;
+        overflow: hidden !important;
+        box-shadow: 0 -4px 16px rgba(0,0,0,0.4) !important;
+    }
+    .right-taskbar .nav-links li:hover .sub-menu {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    .right-taskbar .nav-links li .sub-menu a,
+    .right-taskbar.close .nav-links li .sub-menu a {
+        display: block !important;
+        width: 100% !important;
+        padding: 10px 18px !important;
+        color: #fff !important;
+        font-size: 14px !important;
+        opacity: 1 !important;
+        white-space: nowrap !important;
+        transition: background 0.15s ease !important;
+        text-align: left !important;
+    }
+    .right-taskbar .nav-links li .sub-menu a:hover {
+        background: rgba(255,255,255,0.12) !important;
+    }
+    .right-taskbar .nav-links li .sub-menu .link-nome,
+    .right-taskbar.close .nav-links li .sub-menu .link-nome {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        opacity: 1 !important;
+        display: block !important;
+        color: #fff !important;
+    }
+    .right-taskbar .nav-links li .sub-menu.blank {
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    .right-taskbar .nav-links li:hover .sub-menu.blank {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+
+    .home-section,
+    .right-taskbar.close ~ .home-section,
+    .right-taskbar.open ~ .home-section {
+        left: 0 !important;
+        width: 100% !important;
+        min-height: calc(100vh - 60px) !important;
+        padding-bottom: 80px !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    .sidebar-overlay { display: none !important; }
+}

@@ -13,14 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-    <link rel="stylesheet" href="assets/designadas.css">
-    <title>Pagina Inicial - WorkBY</title>
+    <link rel="stylesheet" href="assets/categorias.css">
+    <title>Categorias - WorkBY</title>
 </head>
 <body>
     <div class="right-taskbar">
         <div class="logo">
-            <i class="bx bx-business"><a href="inicial.php"></a></i>
-            <span class="logo-nome"><a href="inicial.php">WorkBY</a></span>
+            <i class="bx bx-business"></i>
+            <span class="logo-nome">WorkBY</span>
         </div>
         <ul class="nav-links">
             <li>
@@ -29,22 +29,16 @@
                     <span class="link-nome">Dashboard</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link-nome" href="inicial.php">Dashboard</a></li>
+                    <li><a class="link-nome" href="#">Dashboard</a></li>
                 </ul>
             </li>
             <li class="selected">
-                <div class="icon-link">
-                    <a href="#">
-                        <i class="bx bx-album-covers"></i>
-                        <span class="link-nome">Categorias</span>
-                    </a>
-                    <i class="bx bx-chevron-down arrow"></i>
-                </div>
-                <ul class="sub-menu">
+                <a href="#">
+                    <i class="bx bx-album-covers"></i>
+                    <span class="link-nome">Categorias</span>
+                </a>
+                <ul class="sub-menu blank">
                     <li><a class="link-nome" href="#">Categorias</a></li>
-                    <li><a href="#">Designadas a mim</a></li>
-                    <li><a href="concluidas.php">Concluídas</a></li>
-                    <li><a href="atrasadas.php">Atrasadas</a></li>
                 </ul>
             </li>
             <li>
@@ -53,16 +47,16 @@
                     <span class="link-nome">Tasks</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a href="tasks.php">Tasks</a></li>
+                    <li><a href="#">Tasks</a></li>
                 </ul>
             </li>
             <li>
                 <a href="importante.php">
-                    <i class="bx bx-alert-triangle"></i>
-                    <span class="link-nome">Importante</span>
+                    <i class="bx bx-cog"></i>
+                    <span class="link-nome">Configurações</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a href="importante.php">Importante</a></li>
+                    <li><a href="#">Configurações</a></li>
                 </ul>
             </li>
             <li>
@@ -80,14 +74,14 @@
         </ul>
     </div>
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
-    <section class="home-section">
-        <div class="home-content">
-            <i class="bx bx-menu"></i>
-            <span class="text"></span>
-        </div>
-    </section>
+        <section class="home-section">
+            <div class="home-content">
+                <i class="bx bx-menu"></i>
+                <span class="text"></span>
+            </div>
+    </div>
 
-
-    <script src="assets/inicial.js"></script>
+    <script src="assets/inicial.js">
+    </script>
 </body>
 </html>

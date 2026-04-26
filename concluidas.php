@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"/>
-    <link rel="stylesheet" href="assets/designadas.css">
+    <link rel="stylesheet" href="assets/concluidas.css">
     <title>Pagina Inicial - WorkBY</title>
 </head>
 <body>
@@ -42,27 +42,27 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link-nome" href="#">Categorias</a></li>
-                    <li><a href="#">Designadas a mim</a></li>
+                    <li><a href="designadas.php">Designadas a mim</a></li>
                     <li><a href="concluidas.php">Concluídas</a></li>
                     <li><a href="atrasadas.php">Atrasadas</a></li>
                 </ul>
             </li>
             <li>
-                <a href="tasks.php">
+                <a href="#">
                     <i class="bx bx-check"></i>
                     <span class="link-nome">Tasks</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a href="tasks.php">Tasks</a></li>
+                    <li><a href="#">Tasks</a></li>
                 </ul>
             </li>
             <li>
-                <a href="importante.php">
+                <a href="#">
                     <i class="bx bx-alert-triangle"></i>
                     <span class="link-nome">Importante</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a href="importante.php">Importante</a></li>
+                    <li><a href="#">Importante</a></li>
                 </ul>
             </li>
             <li>
